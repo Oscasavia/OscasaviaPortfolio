@@ -57,7 +57,7 @@
         "title": "Wimbli",
         "description": "Wimbli is a cross-platform mobile app built with React Native and Firebase, focused on helping users discover hyper-local, spontaneous experiences and real-world connections",
         "image": "assets/images/wimbli-icon-bg.png",
-        "tech": ["TypeScript", "Firebase", "CSS"],
+        "tech": ["TypeScript", "Firebase"],
         "liveUrl": "https://play.google.com/store/apps/details?id=com.oscasavia.clarifin",
         "repoUrl": "https://github.com/Oscasavia/wimbli"
       }
