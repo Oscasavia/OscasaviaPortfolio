@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Software Engineer</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/OscasaviaLogo.png">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Example: Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <a href="#"><img id="logo-img" src="assets/images/OscasaviaLogo.png" alt="Your logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a id="nav-resume" href="assets/docs/OscasaviaB_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="hero-content">
+                <h1 class="fade-in">Hi, I'm <span id="hero-name"></span></h1>
+                <div class="animated-title-container fade-in delay-1">
+                    <h2 class="hero-title-static">I am <span id="hero-title"></span></h2>
+                </div>
+                <p class="fade-in delay-2" id="hero-short-bio">Loading bio snippet...</p>
+                 <div class="hero-buttons fade-in delay-3">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a id="hero-resume" href="assets/docs/OscasaviaB_Resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-alt"></i> View Resume
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                 </div>
+                 <div class="social-links hero-social fade-in delay-4">
+                    <a id="hero-linkedin" href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a id="hero-github" href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a id="hero-email" href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                 </div>
+            </div>
+            <!-- Optional: Add a subtle background element or image here -->
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section section-bg">
+            <h2 class="section-title slide-in">About Me</h2>
+            <div class="about-container">
+                <div class="about-image slide-in">
+                    <img id="about-img" src="assets/images/profile.jpg" alt="Your Name">
+                </div>
+                <div class="about-text slide-in delay-1">
+                    <p id="about-bio">Loading bio...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title fade-in">My Skills</h2>
+            <div class="skills-grid" id="skills-container">
+                <!-- Skills will be loaded here by JavaScript -->
+                <p>Loading skills...</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section section-bg">
+            <h2 class="section-title fade-in">My Projects</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be loaded here by JavaScript -->
+                <p>Loading projects...</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="contact-text fade-in delay-1">
+                I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+            </p>
+            <div class="contact-links fade-in delay-2">
+                <a id="contact-linkedin" href="#" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a id="contact-github" href="#" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                <a id="contact-email" href="#" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="footer-year"></span> <span id="footer-name"></span>. All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#header" id="back-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
