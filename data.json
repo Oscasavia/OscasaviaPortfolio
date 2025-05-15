@@ -43,7 +43,7 @@
         "image": "assets/images/savia_jobs_logo.png",
         "tech": ["HTML", "CSS", "Firebase", "JavaScript"],
         "liveUrl": "https://saviajobconsultants.netlify.app/",
-        "repoUrl": "https://github.com/yourusername/data-dashboard"
+        "repoUrl": "https://github.com/Oscasavia/SaviaJobs"
       },
       {
         "title": "Clarifin",
@@ -58,7 +58,7 @@
         "description": "Wimbli is a cross-platform mobile app built with React Native and Firebase, focused on helping users discover hyper-local, spontaneous experiences and real-world connections",
         "image": "assets/images/wimbli-icon-bg.png",
         "tech": ["TypeScript", "Firebase"],
-        "liveUrl": "https://play.google.com/store/apps/details?id=com.oscasavia.clarifin",
+        "liveUrl": "https://play.google.com/store/apps/details?id=com.oscasavia.wimbli",
         "repoUrl": "https://github.com/Oscasavia/wimbli"
       }
     ]
