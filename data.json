@@ -21,10 +21,12 @@
       { "name": "React", "icon": "fab fa-react", "category": "Frontend" },
       { "name": "Node.js", "icon": "fab fa-node-js", "category": "Backend" },
       { "name": "Python", "icon": "fab fa-python", "category": "Backend" },
+      {"name": "Docker", "icon": "fab fa-docker", "category": "Backend"},
       { "name": "HTML5", "icon": "fab fa-html5", "category": "Frontend" },
       { "name": "CSS3", "icon": "fab fa-css3-alt", "category": "Frontend" },
       { "name": "SQL", "icon": "fas fa-database", "category": "Database" },
       { "name": "Git", "icon": "fab fa-git-alt", "category": "Tools" },
+      {"name": "Ubuntu", "icon": "fab fa-ubuntu", "category": "Tools"},
       { "name": "PHP", "icon": "fab fa-php", "category": "Backend" }
 
     ],
