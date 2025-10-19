@@ -1,48 +1,35 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Wimbli - Social Events App",
       description:
-        "Full-stack e-commerce solution with real-time inventory management and payment processing.",
-      tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+        "Wimbli is a cross-platform mobile app focused on helping people discover hyper-local, spontaneous experiences and real-world connections.",
+      tech: ["Flutter", "Dart", "Firebase"],
       gradient: "from-primary to-accent",
     },
     {
-      title: "Task Management App",
+      title: "Savia Job Consultants - Job Website",
       description:
-        "Collaborative task management tool with real-time updates and team collaboration features.",
-      tech: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+        "Savia Job Consultants is a static web application for viewing available job posts in Uganda.",
+      tech: ["HTML", "CSS", "JavaScript", "Firebase"],
       gradient: "from-accent to-secondary",
     },
     {
-      title: "Analytics Dashboard",
+      title: "Clarifin - Mobile Financial App",
       description:
-        "Real-time analytics dashboard with data visualization and custom reporting.",
-      tech: ["React", "D3.js", "Express", "MongoDB"],
+        "Clarifin is an android mobile application that helps users with planning and tracking their personal financial goals.",
+      tech: ["Flutter", "Dart"],
       gradient: "from-secondary to-primary",
     },
     {
-      title: "Mobile Banking App",
-      description:
-        "Secure mobile banking application with biometric authentication and transaction history.",
-      tech: ["React Native", "Firebase", "Redux", "TypeScript"],
-      gradient: "from-primary/80 to-accent/80",
-    },
-    {
-      title: "Social Media Platform",
-      description:
-        "Social networking platform with real-time messaging and content sharing capabilities.",
-      tech: ["Vue.js", "GraphQL", "PostgreSQL", "Redis"],
-      gradient: "from-accent/80 to-secondary/80",
-    },
-    {
-      title: "AI Content Generator",
+      title: "Oscasavia AI - Personal Generative AI",
       description:
         "AI-powered content generation tool with natural language processing capabilities.",
-      tech: ["Python", "React", "OpenAI", "FastAPI"],
+      tech: ["React", "TypeScript", "Supabase", "Tailwind"],
       gradient: "from-secondary/80 to-primary/80",
     },
   ];
@@ -84,11 +71,31 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="flex gap-2 pt-2">
-                  <Button variant="outline" size="sm" className="glass-card flex-1">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="glass-card flex-1"
+                    asChild
+                  >
+                    <a
+                      href="https://github.com/Oscasavia"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </a>
                   </Button>
-                  <Button size="sm" className="flex-1">
+                  <Button
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => {
+                      toast({
+                        title: "Interested in a demo?",
+                        description: "Please contact me to schedule a live demonstration of this project.",
+                      });
+                    }}
+                  >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Demo
                   </Button>

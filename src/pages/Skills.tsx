@@ -1,43 +1,49 @@
-import { Code, Database, Layout, Server, Smartphone, Wrench } from "lucide-react";
+import { Code2, Database, LayoutDashboard, BarChart3, Laptop, Workflow, Smartphone } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend Development",
-      icon: Layout,
-      skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "HTML5", "CSS3"],
+      title: "Languages",
+      icon: Code2,
+      skills: ["JavaScript", "TypeScript", "Python", "C", "C++", "C#", "PHP", "YAML", "Jinja2", "Bash", "R", "MATLAB", "Haskell", "Dart", "HTML", "CSS", "SQL"],
+      color: "from-primary/80 to-accent/80",
+    },
+    {
+      title: "DevOps & Automation Tools",
+      icon: Workflow,
+      skills: ["Ansible", "Jenkins", "GitHub Actions", "Docker", "VMWare", "Ollama", "CAP", "TIETools", "Aria/vRealize Automation"],
+      color: "from-secondary/80 to-primary/80",
+    },
+    {
+      title: "Mobile Development",
+      icon: Smartphone,
+      skills: ["Flutter", "Expo Go", "Firebase", "iOS", "Android", "React Native"],
+      color: "from-secondary/80 to-accent/80",
+    },
+    {
+      title: "Version Control & Collaboration",
+      icon: LayoutDashboard,
+      skills: ["GitHub", "GitHub EMU", "Jira", "Rally", "Miro"],
       color: "from-primary to-accent",
     },
     {
-      title: "Backend Development",
-      icon: Server,
-      skills: ["Node.js", "Python", "Express", "REST APIs", "GraphQL"],
+      title: "Data & Visualization",
+      icon: BarChart3,
+      skills: ["Power BI", "Grafana", "Apptio", "Excel"],
       color: "from-accent to-secondary",
     },
     {
       title: "Database & Storage",
       icon: Database,
-      skills: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "Firebase"],
+      skills: ["PostgreSQL", "MySQL", "Supabase", "Firebase"],
       color: "from-secondary to-primary",
     },
     {
-      title: "Programming Languages",
-      icon: Code,
-      skills: ["JavaScript", "TypeScript", "Python", "Java", "C++"],
-      color: "from-primary/80 to-accent/80",
-    },
-    {
-      title: "Mobile Development",
-      icon: Smartphone,
-      skills: ["React Native", "Flutter", "iOS", "Android"],
+      title: "Development Tools & IDEs",
+      icon: Laptop,
+      skills: ["VS Code", "Eclipse", "Android Studio", "XCode"],
       color: "from-accent/80 to-secondary/80",
-    },
-    {
-      title: "Tools & Technologies",
-      icon: Wrench,
-      skills: ["Git", "Docker", "AWS", "CI/CD", "Agile", "Testing"],
-      color: "from-secondary/80 to-primary/80",
-    },
+    }
   ];
 
   return (

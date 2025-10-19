@@ -1,4 +1,5 @@
 import { User } from "lucide-react";
+import profilePic from "../../assets/images/OscasaviaProfilePic.jpg";
 
 const About = () => {
   return (
@@ -15,15 +16,12 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="glass-card p-8 rounded-2xl space-y-6">
-            <div className="aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-primary/30">
-              <div className="text-center space-y-3">
-                <User className="w-24 h-24 mx-auto text-primary/50" />
-                <p className="text-sm text-muted-foreground">
-                  Profile Picture
-                  <br />
-                  <span className="text-xs">(Add your photo here)</span>
-                </p>
-              </div>
+            <div className="aspect-square rounded-2xl overflow-hidden">
+              <img 
+                src={profilePic} 
+                alt="Oscasavia Birungi - Software Engineer" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -46,7 +44,7 @@ const About = () => {
                 </p>
                 <p>
                   When I'm not coding, you'll find me exploring new
-                  technologies, contributing to open-source projects, or
+                  technologies, working on personal projects, or
                   sharing knowledge with the developer community.
                 </p>
               </div>
@@ -69,7 +67,7 @@ const About = () => {
                 </div>
                 <div className="flex justify-between">
                   <span>Availability</span>
-                  <span className="text-primary">Open to Opportunities</span>
+                  <span className="text-primary">Not in the Market</span>
                 </div>
               </div>
             </div>

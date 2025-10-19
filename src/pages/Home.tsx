@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-4xl w-full mx-auto text-center space-y-8 animate-fade-in-up">
         <div className="space-y-4">
-          <h1 className="text-6xl md:text-8xl font-bold gradient-text animate-float">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold gradient-text animate-float break-words">
             Oscasavia Birungi
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground">
             Software Engineer
           </p>
         </div>
@@ -57,7 +57,7 @@ const Home = () => {
           </a>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl -z-10 animate-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 bg-primary/20 rounded-full blur-3xl -z-10 animate-glow" />
       </div>
     </div>
   );
