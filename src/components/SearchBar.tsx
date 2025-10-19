@@ -36,13 +36,13 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="fixed top-20 right-6 z-40">
+    <div className={`fixed top-20 right-6 z-40 ${isOpen ? "left-6 sm:left-auto" : ""}`}>
       {!isOpen ? (
-        <Button onClick={() => setIsOpen(true)} size="icon" className="glass-card hover:bg-primary/20 transition-all">
+        <Button onClick={() => setIsOpen(true)} size="icon" className="glass-card rounded-lg hover:bg-primary/20 transition-all">
           <Search className="w-5 h-5" />
         </Button>
       ) : (
-        <form onSubmit={handleSearch} className="glass-card p-2 animate-scale-in">
+        <form onSubmit={handleSearch} className="glass-card rounded-lg p-2 animate-scale-in">
           <div className="flex items-center gap-2">
             <Search className="w-5 h-5 text-muted-foreground" />
             <Input
@@ -50,7 +50,7 @@ const SearchBar = () => {
               placeholder="Search portfolio..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-64 bg-transparent border-0 focus-visible:ring-0"
+              className="w-full sm:w-64 bg-transparent border-0 focus-visible:ring-0"
               autoFocus
             />
             <Button
