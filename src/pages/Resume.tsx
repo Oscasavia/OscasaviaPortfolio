@@ -72,7 +72,7 @@ const Resume = () => {
       degree: "Bachelor's degree, Software Engineering",
       school: "Washington State University",
       period: "Aug 2018 - Dec 2022",
-      details: "Grade: 3.37",
+      details: "Mathematics Minor",
     },
   ];
 
