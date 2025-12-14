@@ -153,7 +153,7 @@ const Resume = () => {
               highlighting the skills and growth that have shaped my career.
             </p><br /><br />
             <a
-              href="/assets/docs/myResumeOscasavia.pdf"
+              href="/src/assets/myResumeOscasavia.pdf"
               download="Oscasavia_Resume.pdf"
               className="btn-primary inline-flex"
             >
