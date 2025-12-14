@@ -31,7 +31,7 @@ const About = () => {
             <AnimatedSection delay={0.1}>
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-secondary">
                 <img 
-                  src="/src/assets/OscasaviaProfilePic.jpg" 
+                  src="/assets/OscasaviaProfilePic.jpg" 
                   alt="Oscasavia - Software Engineer"
                   className="w-full h-full object-cover"
                 />
