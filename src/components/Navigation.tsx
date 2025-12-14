@@ -44,11 +44,12 @@ const Navigation = () => {
       >
         <nav className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            to="/"
-            className="text-xl font-bold tracking-tight hover:opacity-70 transition-opacity"
-          >
-            OSCASAVIA
+          <Link to="/" className="hover:opacity-70 transition-opacity">
+            <img
+              src="/assets/OscasaviaLogo.png"
+              alt="Oscasavia Logo"
+              className="h-7 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation - Centered */}
@@ -79,7 +80,7 @@ const Navigation = () => {
           {/* Right Side - Search & Mobile Menu */}
           <div className="flex items-center gap-2">
             <SearchBar />
-            
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
