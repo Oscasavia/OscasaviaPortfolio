@@ -25,7 +25,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">OSCASAVIA</h3>
+
+            <h3 className="text-2xl font-bold mb-4">
+              <img
+              src="/assets/OscasaviaLogo.png"
+              alt="Oscasavia Logo"
+              className="h-7 w-auto filter brightness-0 invert"
+            />
+            </h3>
             <p className="text-primary-foreground/70 max-w-md mb-6">
               Software Engineer crafting elegant solutions to complex problems. 
               Passionate about building innovative software that makes a difference.
