@@ -73,10 +73,24 @@ A valid form submission sends a real email using the configured account. Mock th
 | Page titles                                               | `src/components/ScrollToTop.tsx`                             |
 | Default metadata, canonical domain, and fonts             | `index.html`                                                 |
 | Browser icon                                              | `assets/OscasaviaLogo.png`                                   |
+| Social preview artwork                                    | `scripts/social-preview.html`, `public/social-preview.png` |
+| Responsive portrait                                       | `src/components/Portrait.tsx`, `src/assets/portrait-*.webp` |
 
 Edit the `projects` array in `src/data/projects.ts` to update the gallery, homepage featured work, and search results. The first two entries appear on the homepage. Category filters are defined in `src/pages/Projects.tsx`. Keep project IDs unique: search uses them to link directly to cards. Set a project's URL to `null` when no public destination is available; the card displays ‘Details coming soon’ without a dead link.
 
-Replace the portrait at `src/assets/OscasaviaProfilePic.jpg` and the résumé at `src/assets/myResumeOscasavia.pdf` to update those files. Keep imports pointing to `src/assets/` so Vite includes them in production builds. The original logo is imported from `assets/OscasaviaLogo.png` by the navigation and footer, and is also used as the browser icon. The portrait and résumé copies in that root directory are legacy files; update the versions under `src/assets/` instead.
+Replace the résumé at `src/assets/myResumeOscasavia.pdf` to update the download. Keep imports pointing to `src/assets/` so Vite includes them in production builds. The original logo is imported from `assets/OscasaviaLogo.png` by the navigation and footer, and is also used as the browser icon. The portrait and résumé copies in that root directory are legacy files; update the versions under `src/assets/` instead.
+
+### Portrait images
+
+`src/assets/OscasaviaProfilePic.jpg` is the full-resolution portrait source. Home and About share `src/components/Portrait.tsx`, which serves WebP derivatives using `srcSet` and layout-specific `sizes`. The original JPEG is retained for future edits and is not imported into the site. Images remain lazy-loaded, with explicit dimensions and the existing 4:5 display crop.
+
+When replacing the source portrait, regenerate `src/assets/portrait-400.webp`, `portrait-800.webp`, `portrait-1200.webp`, and `portrait-1600.webp` at their named widths. Preserve the source aspect ratio, apply EXIF orientation, and use WebP quality 82 (the current files were generated with Sharp, effort 6). Update the intrinsic width and height in `Portrait.tsx` if the source proportions change. Check both pages at mobile and desktop widths; the browser should request a WebP matching the displayed size and screen density.
+
+### Social preview
+
+`public/social-preview.png` is a 1200 × 630 image using the original logo and the site's typography and palette. Open Graph and Twitter image metadata in `index.html` point to its absolute production URL, so crawlers can find it without running JavaScript.
+
+To edit the artwork, update `scripts/social-preview.html`, start the development server, and open `/scripts/social-preview.html`. Export a viewport screenshot at exactly 1200 × 630 CSS pixels with device pixel ratio 1, after the Outfit font and logo finish loading. Save the PNG to `public/social-preview.png`. The HTML is an editable source file, not part of the production build. Keep the image dimensions, alt text, and production URL in `index.html` aligned with the exported artwork.
 
 ## Deployment
 

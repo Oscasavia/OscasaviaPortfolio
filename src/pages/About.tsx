@@ -1,5 +1,5 @@
 import { resumeProfile } from "@/data/resume";
-import portrait from "@/assets/OscasaviaProfilePic.jpg";
+import Portrait from "@/components/Portrait";
 import { motion } from "framer-motion";
 import { MapPin, Briefcase, GraduationCap } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -31,13 +31,8 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <AnimatedSection delay={0.1}>
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-secondary">
-                <img
-                  src={portrait}
-                  loading="lazy"
-                  width="3352"
-                  height="4476"
-                  alt="Oscasavia - Software Engineer"
-                  className="w-full h-full object-cover"
+                <Portrait
+                  sizes="(min-width: 1280px) 544px, (min-width: 1024px) calc(50vw - 96px), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"
                 />
               </div>
             </AnimatedSection>

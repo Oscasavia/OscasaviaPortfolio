@@ -12,7 +12,7 @@ import {
   Workflow,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import portrait from "@/assets/OscasaviaProfilePic.jpg";
+import Portrait from "@/components/Portrait";
 import resume from "@/assets/myResumeOscasavia.pdf";
 import ProjectCard from "@/components/ProjectCard";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -205,13 +205,8 @@ const Home = () => {
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-[.8fr_1.2fr] md:px-12 lg:gap-20">
           <AnimatedSection>
             <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-secondary">
-              <img
-                src={portrait}
-                alt="Oscasavia Birungi"
-                loading="lazy"
-                width="3352"
-                height="4476"
-                className="h-full w-full object-cover"
+              <Portrait
+                sizes="(min-width: 1280px) 442px, (min-width: 1024px) calc(40vw - 70.4px), (min-width: 768px) calc(40vw - 57.6px), calc(100vw - 48px)"
               />
             </div>
           </AnimatedSection>
