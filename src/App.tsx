@@ -1,42 +1,52 @@
-import { Toaster } from "@/components/ui/toaster";
+import { lazy, Suspense } from "react";
+import { MotionConfig } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Skills from "./pages/Skills";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-import Resume from "./pages/Resume";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
+const About = lazy(() => import("./pages/About"));
+const Skills = lazy(() => import("./pages/Skills"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Resume = lazy(() => import("./pages/Resume"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <MotionConfig reducedMotion="user">
     <TooltipProvider>
-      <Toaster />
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <main id="main-content" tabIndex={-1}>
+          <Suspense
+            fallback={
+              <div className="max-w-7xl mx-auto px-6 md:px-12 min-h-[70vh] pt-40" role="status">
+                Loading page…
+              </div>
+            }
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
+  </MotionConfig>
 );
 
 export default App;

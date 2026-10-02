@@ -1,8 +1,17 @@
+import logo from "../../assets/OscasaviaLogo.png";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetDescription,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -31,7 +40,7 @@ const Navigation = () => {
   }, [location.pathname]);
 
   return (
-    <>
+    <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -44,20 +53,23 @@ const Navigation = () => {
       >
         <nav className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="hover:opacity-70 transition-opacity">
-            <img
-              src="/assets/OscasaviaLogo.png"
-              alt="Oscasavia Logo"
-              className="h-7 w-auto"
-            />
+          <Link
+            to="/"
+            aria-label="Oscasavia home"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <img src={logo} alt="Oscasavia Logo" className="h-7 w-auto" />
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <ul className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
+                  aria-current={
+                    location.pathname === link.path ? "page" : undefined
+                  }
                   className={`relative text-sm font-medium transition-colors ${
                     location.pathname === link.path
                       ? "text-foreground"
@@ -82,66 +94,49 @@ const Navigation = () => {
             <SearchBar />
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-secondary rounded-full transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <SheetTrigger asChild>
+              <button
+                className="lg:hidden p-2 hover:bg-secondary rounded-full transition-colors"
+                aria-label="Open navigation menu"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </SheetTrigger>
           </div>
         </nav>
       </motion.header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <div
-              className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.nav
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-background border-l border-border shadow-2xl"
-            >
-              <div className="flex flex-col h-full pt-24 pb-8 px-8">
-                <ul className="space-y-2">
-                  {navLinks.map((link, index) => (
-                    <motion.li
-                      key={link.path}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
-                    >
-                      <Link
-                        to={link.path}
-                        className={`block py-4 text-2xl font-medium transition-colors ${
-                          location.pathname === link.path
-                            ? "text-foreground"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      <SheetContent
+        className="w-80 max-w-[85vw] px-8 pt-24 lg:hidden"
+        onKeyDown={(event) => {
+          if (event.key === "Escape") setIsMobileMenuOpen(false);
+        }}
+      >
+        <SheetTitle className="sr-only">Navigation</SheetTitle>
+        <SheetDescription className="sr-only">
+          Explore the portfolio
+        </SheetDescription>
+        <nav aria-label="Mobile navigation">
+          <ul className="space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <SheetClose asChild>
+                  <Link
+                    to={link.path}
+                    aria-current={
+                      location.pathname === link.path ? "page" : undefined
+                    }
+                    className={`block py-4 text-2xl font-medium transition-colors ${location.pathname === link.path ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                  >
+                    {link.name}
+                  </Link>
+                </SheetClose>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </SheetContent>
+    </Sheet>
   );
 };
 

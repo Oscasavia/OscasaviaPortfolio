@@ -1,0 +1,8 @@
+[build]
+  command = "npm run check"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# React Router's history fallback is defined in public/_redirects.

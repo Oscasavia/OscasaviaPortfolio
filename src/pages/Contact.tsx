@@ -1,3 +1,4 @@
+import { resumeProfile } from "@/data/resume";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
@@ -7,9 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const SERVICE_ID = "service_qa7kb7h";
-const TEMPLATE_ID = "template_f63duva";
-const PUBLIC_KEY = "39winCnjPI9lH_WWt";
+// Public browser identifiers; environment overrides are optional.
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_qa7kb7h";
+const TEMPLATE_ID =
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_f63duva";
+const PUBLIC_KEY =
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "39winCnjPI9lH_WWt";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -29,12 +33,16 @@ const Contact = () => {
       .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then(
         () => {
-          toast.success("Message sent successfully! I'll get back to you soon.");
+          toast.success(
+            "Message sent successfully! I'll get back to you soon.",
+          );
           formRef.current?.reset();
         },
         () => {
-          toast.error("Failed to send message. Please try again later.");
-        }
+          toast.error(
+            "Failed to send message. Please try again or email oscasavia@gmail.com.",
+          );
+        },
       )
       .finally(() => {
         setIsLoading(false);
@@ -57,7 +65,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "United States",
+      value: resumeProfile.location,
       href: null,
     },
   ];
@@ -72,13 +80,14 @@ const Contact = () => {
               Get In Touch
             </p>
             <h1 className="heading-display mb-8">
-              Let's Work<br />
+              Let's Work
+              <br />
               <span className="text-muted-foreground">Together</span>
             </h1>
             <div className="divider mb-8" />
             <p className="body-large">
-              Have a project in mind or just want to say hello? 
-              I'd love to hear from you.
+              Have a project in mind or just want to say hello? I'd love to hear
+              from you.
             </p>
           </AnimatedSection>
         </div>
@@ -98,7 +107,9 @@ const Contact = () => {
                   <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
                     <info.icon className="w-6 h-6 text-accent" />
                   </div>
-                  <p className="text-sm text-muted-foreground mb-2">{info.label}</p>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    {info.label}
+                  </p>
                   {info.href ? (
                     <a
                       href={info.href}
@@ -132,25 +143,40 @@ const Contact = () => {
               <div className="text-center mb-8">
                 <h2 className="heading-card mb-2">Send a Message</h2>
                 <p className="text-muted-foreground">
-                  Fill out the form below and I'll get back to you as soon as possible.
+                  Fill out the form below and I'll get back to you as soon as
+                  possible.
                 </p>
               </div>
 
               <fieldset disabled={isLoading} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Name</label>
+                    <label
+                      htmlFor="contact-name"
+                      className="text-sm font-medium"
+                    >
+                      Name
+                    </label>
                     <Input
+                      id="contact-name"
                       name="name"
+                      autoComplete="name"
                       placeholder="Your name"
                       required
                       className="h-14 rounded-2xl bg-background border-border px-6"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Email</label>
+                    <label
+                      htmlFor="contact-email"
+                      className="text-sm font-medium"
+                    >
+                      Email
+                    </label>
                     <Input
+                      id="contact-email"
                       name="email"
+                      autoComplete="email"
                       type="email"
                       placeholder="your.email@example.com"
                       required
@@ -160,8 +186,14 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Subject</label>
+                  <label
+                    htmlFor="contact-subject"
+                    className="text-sm font-medium"
+                  >
+                    Subject
+                  </label>
                   <Input
+                    id="contact-subject"
                     name="subject"
                     placeholder="What's this about?"
                     required
@@ -170,8 +202,14 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Message</label>
+                  <label
+                    htmlFor="contact-message"
+                    className="text-sm font-medium"
+                  >
+                    Message
+                  </label>
                   <Textarea
+                    id="contact-message"
                     name="message"
                     placeholder="Tell me about your project..."
                     rows={6}

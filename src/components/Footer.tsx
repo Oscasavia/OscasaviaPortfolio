@@ -1,3 +1,4 @@
+import logo from "../../assets/OscasaviaLogo.png";
 import { Link } from "react-router-dom";
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
@@ -28,7 +29,7 @@ const Footer = () => {
 
             <h3 className="text-2xl font-bold mb-4">
               <img
-              src="/assets/OscasaviaLogo.png"
+              src={logo}
               alt="Oscasavia Logo"
               className="h-7 w-auto filter brightness-0 invert"
             />

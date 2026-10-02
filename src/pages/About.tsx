@@ -1,3 +1,5 @@
+import { resumeProfile } from "@/data/resume";
+import portrait from "@/assets/OscasaviaProfilePic.jpg";
 import { motion } from "framer-motion";
 import { MapPin, Briefcase, GraduationCap } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -13,13 +15,12 @@ const About = () => {
               About Me
             </p>
             <h1 className="heading-display mb-8">
-              Hello, I'm<br />
+              Hello, I'm
+              <br />
               <span className="text-muted-foreground">Oscasavia</span>
             </h1>
             <div className="divider mb-8" />
-            <p className="body-large">
-              Get to know me better.
-            </p>
+            <p className="body-large">Get to know me better.</p>
           </AnimatedSection>
         </div>
       </section>
@@ -30,8 +31,11 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <AnimatedSection delay={0.1}>
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-secondary">
-                <img 
-                  src="/assets/OscasaviaProfilePic.jpg" 
+                <img
+                  src={portrait}
+                  loading="lazy"
+                  width="3352"
+                  height="4476"
                   alt="Oscasavia - Software Engineer"
                   className="w-full h-full object-cover"
                 />
@@ -51,14 +55,15 @@ const About = () => {
                     desire to make an impact.
                   </p>
                   <p>
-                    With expertise in modern web technologies and a strong
-                    foundation in software development principles, I specialize in
-                    building scalable, efficient, and user-friendly applications.
+                    At CVS Health, I develop Flip, an enterprise feature
+                    flagging and experimentation platform. I work with Next.js,
+                    TypeScript, and Drizzle ORM to build workflows for feature
+                    flags, targeting rules, and controlled rollouts.
                   </p>
                   <p>
                     When I'm not coding, you'll find me exploring new
-                    technologies, working on personal projects, or
-                    sharing knowledge with the developer community.
+                    technologies, working on personal projects, or sharing
+                    knowledge with the developer community.
                   </p>
                 </div>
               </div>
@@ -79,12 +84,12 @@ const About = () => {
               {
                 icon: MapPin,
                 label: "Location",
-                value: "United States",
+                value: resumeProfile.location,
               },
               {
                 icon: Briefcase,
                 label: "Current Role",
-                value: "DevEx Engineer at CVS Health",
+                value: `${resumeProfile.currentRole} at ${resumeProfile.company}`,
               },
               {
                 icon: GraduationCap,
@@ -101,7 +106,9 @@ const About = () => {
                   <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-6">
                     <fact.icon className="w-6 h-6 text-accent" />
                   </div>
-                  <p className="text-sm text-muted-foreground mb-2">{fact.label}</p>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    {fact.label}
+                  </p>
                   <p className="text-xl font-semibold">{fact.value}</p>
                 </motion.div>
               </AnimatedSection>

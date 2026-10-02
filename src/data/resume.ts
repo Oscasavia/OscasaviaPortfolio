@@ -1,0 +1,137 @@
+// Content transcribed from src/assets/resume.html.
+export const resumeProfile = {
+  summary:
+    "Software Development Engineer with experience building scalable internal developer platforms, CI/CD automation, observability solutions, and enterprise tooling at CVS Health. Skilled in full-stack development, with a strong focus on developer experience, platform reliability, and engineering efficiency. Proven ability to collaborate across cross-functional teams to deliver impactful solutions that improve product adoption, reduce operational costs, and accelerate software delivery.",
+  currentRole: "Software Development Engineer",
+  company: "CVS Health",
+  location: "Elgin, IL",
+  experience: [
+    {
+      title: "Software Development Engineer",
+      company: "CVS Health",
+      period: "Jan 2026 – Present",
+      achievements: [
+        "Develop Flip, CVS Health’s enterprise feature flagging and experimentation platform used by engineering teams across the organization, including applications supporting MinuteClinic and other enterprise products.",
+        "Build full-stack platform capabilities using Next.js, TypeScript, and Drizzle ORM, delivering scalable workflows for feature flags, segments, targeting rules, and controlled application rollouts.",
+        "Support the enterprise migration from LaunchDarkly to Flip, helping reduce third-party software licensing costs by approximately $2M annually while expanding adoption of internally developed tooling.",
+        "Partner with product designers, platform engineers, and application teams to build developer-focused interfaces and workflows, improving usability, reliability, and adoption across engineering teams.",
+      ],
+    },
+    {
+      title: "DevEx Engineer (SWE Program)",
+      company: "CVS Health",
+      period: "Jan 2025 – Jan 2026",
+      achievements: [
+        "Contributed to CVS Health’s Experience Platform, building reusable platform capabilities and internal tooling that accelerate how engineering teams develop, onboard, and ship digital experiences.",
+        "Built automated GitHub Actions CI/CD pipelines for semantic versioning, Docker image creation, release tagging, and internal Actions, reducing manual release processes and improving deployment consistency.",
+        "Implemented the MicroEdge control layer to strengthen platform authentication capabilities and improve the developer experience for teams consuming the platform.",
+        "Developed production Grafana observability dashboards tracking availability, HTTP response codes, CPU, memory, latency, and application errors, improving visibility into platform health and accelerating troubleshooting.",
+        "Improved the release and security workflow for Lighthouse Server by automating container builds and integrating Snyk and Secure Pipeline scanning, while creating documentation and guidance to help product teams successfully adopt and deploy the Experience Platform.",
+      ],
+    },
+    {
+      title: "Automation Engineer (SWE Program)",
+      company: "CVS Health",
+      period: "Jun 2024 – Jan 2025",
+      achievements: [
+        "Led 4 cross-functional automation teams through successful GitHub EMU migrations, coordinating repository transitions and minimizing disruption across multiple engineering teams.",
+        "Automated DataPower firmware upgrades and infrastructure operations, reducing manual intervention and improving the speed and consistency of recurring maintenance activities.",
+        "Designed and maintained Jenkins CI/CD pipelines and automation workflows, streamlining software delivery and improving operational efficiency.",
+        "Developed an automated inventory management solution with real-time usage tracking, improving visibility into automation activity and enabling teams to monitor utilization and operational trends.",
+        "Built internal tooling and observability capabilities, including front-end automation forms, playbook logging and analytics, troubleshooting utilities, and technical documentation, making automated processes easier to execute, monitor, and support.",
+      ],
+    },
+    {
+      title: "Jr. Scrum Master / IT Project Manager Contractor",
+      company: "CVS Health",
+      period: "Sep 2023 – Jun 2024",
+      achievements: [
+        "Reduced VM provisioning time from 4–6 months to under 3 hours by supporting Express Stack provisioning/deprovisioning, tooling, and UI testing.",
+        "Led Agile/SAFe execution across 10+ cross-functional teams, managing PI and iteration planning in Miro and facilitating standups, retrospectives, and testing bridges.",
+        "Coordinated 5+ technical projects, managing scope, risks, constraints, and deadlines across databases (Oracle, DB2, SQL), IIS, Windows, and Red Hat Linux environments.",
+        "Served in Scrum Master, Project Manager, and Product Manager capacities, driving delivery of Express Stack solutions for enterprise engineers and application developers.",
+        "Partnered with stakeholders and technical teams to resolve defects, deliver executive reporting, and support enterprise integrations using API Connect and DataPower.",
+      ],
+    },
+  ],
+  education: [
+    {
+      degree: "B.S. in Software Engineering",
+      school: "Washington State University — Pullman, WA",
+      period: "Aug 2018 – Dec 2022",
+      details: "Minor in Mathematics",
+    },
+  ],
+  certifications: [
+    "Certified Professional Scrum Master I (PSM I)",
+    "Certified SAFe 6 Agilist",
+    "Microsoft Certified: Azure Fundamentals",
+  ],
+  skillCategories: [
+    {
+      title: "Languages",
+      skills: [
+        "Python",
+        "C/C++",
+        "C#",
+        "Dart",
+        "HTML/CSS",
+        "SQL",
+        "R",
+        "MATLAB",
+        "Haskell",
+        "YAML",
+        "PHP",
+        "JavaScript",
+        "TypeScript",
+        "Bash",
+      ],
+    },
+    {
+      title: "Frameworks & Web",
+      skills: [
+        "Next.js",
+        "Node.js",
+        "Drizzle ORM",
+        "Express Stack",
+        "Flutter",
+        "Firebase",
+      ],
+    },
+    {
+      title: "DevOps & Cloud",
+      skills: [
+        "GitHub Actions",
+        "Linux (Ubuntu, Mint)",
+        "VirtualBox",
+        "VMware",
+        "Azure Fundamentals",
+        "Ansible",
+        "Jenkins",
+        "Docker",
+        "TIETools",
+        "Grafana",
+      ],
+    },
+    {
+      title: "Platform & Tools",
+      skills: [
+        "Android Studio",
+        "Xcode",
+        "IBM DataPower",
+        "API Connect",
+        "MicroEdge",
+        "Google Analytics",
+        "Jira",
+        "Rally",
+        "Confluence",
+        "Miro",
+        "Power BI",
+      ],
+    },
+    {
+      title: "Methodologies & Governance",
+      skills: ["SAFe", "Scrum", "Kanban", "Agile", "XP", "Waterfall", "SDLC"],
+    },
+  ],
+};

@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef, ReactNode } from "react";
 
 interface AnimatedSectionProps {
@@ -15,6 +15,7 @@ const AnimatedSection = ({
   direction = "up",
 }: AnimatedSectionProps) => {
   const ref = useRef(null);
+  const reducedMotion = useReducedMotion();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const directionOffset = {
@@ -28,15 +29,19 @@ const AnimatedSection = ({
   return (
     <motion.div
       ref={ref}
-      initial={{
-        opacity: 0,
-        y: directionOffset[direction].y,
-        x: directionOffset[direction].x,
-      }}
+      initial={
+        reducedMotion
+          ? false
+          : {
+              opacity: 0,
+              y: directionOffset[direction].y,
+              x: directionOffset[direction].x,
+            }
+      }
       animate={{
-        opacity: isInView ? 1 : 0,
-        y: isInView ? 0 : directionOffset[direction].y,
-        x: isInView ? 0 : directionOffset[direction].x,
+        opacity: isInView || reducedMotion ? 1 : 0,
+        y: isInView || reducedMotion ? 0 : directionOffset[direction].y,
+        x: isInView || reducedMotion ? 0 : directionOffset[direction].x,
       }}
       transition={{
         duration: 0.8,

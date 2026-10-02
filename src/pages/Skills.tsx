@@ -1,81 +1,16 @@
 import { motion } from "framer-motion";
-import {
-  Code2,
-  Database,
-  LayoutDashboard,
-  BarChart3,
-  Laptop,
-  Workflow,
-  Smartphone,
-} from "lucide-react";
+import { Code2, Layers, Workflow, Laptop, Users } from "lucide-react";
+import { resumeProfile } from "@/data/resume";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Languages",
-      icon: Code2,
-      skills: [
-        "JavaScript",
-        "TypeScript",
-        "Python",
-        "C",
-        "C++",
-        "C#",
-        "PHP",
-        "YAML",
-        "Jinja2",
-        "Bash",
-        "R",
-        "MATLAB",
-        "Haskell",
-        "Dart",
-        "HTML",
-        "CSS",
-        "SQL",
-      ],
-    },
-    {
-      title: "DevOps & Automation",
-      icon: Workflow,
-      skills: [
-        "Ansible",
-        "Jenkins",
-        "GitHub Actions",
-        "Docker",
-        "VMWare",
-        "Ollama",
-        "CAP",
-        "TIETools",
-        "Aria/vRealize Automation",
-      ],
-    },
-    {
-      title: "Mobile Development",
-      icon: Smartphone,
-      skills: ["Flutter", "Expo Go", "Firebase", "iOS", "Android", "React Native"],
-    },
-    {
-      title: "Version Control",
-      icon: LayoutDashboard,
-      skills: ["GitHub", "GitHub EMU", "Jira", "Rally", "Miro"],
-    },
-    {
-      title: "Data & Visualization",
-      icon: BarChart3,
-      skills: ["Power BI", "Grafana", "Apptio", "Excel"],
-    },
-    {
-      title: "Database & Storage",
-      icon: Database,
-      skills: ["PostgreSQL", "MySQL", "Supabase", "Firebase"],
-    },
-    {
-      title: "Development Tools",
-      icon: Laptop,
-      skills: ["VS Code", "Eclipse", "Android Studio", "XCode"],
-    },
-  ];
+  const icons = [Code2, Layers, Workflow, Laptop, Users];
+  const skillCategories = resumeProfile.skillCategories.map(
+    (category, index) => ({
+      ...category,
+      icon: icons[index],
+    }),
+  );
 
   return (
     <div className="min-h-screen pt-20">
@@ -92,8 +27,8 @@ const Skills = () => {
             </h1>
             <div className="divider mb-8" />
             <p className="body-large">
-              A comprehensive toolkit built over years of hands-on experience 
-              in software engineering and DevOps.
+              A comprehensive toolkit built over years of hands-on experience in
+              software engineering and DevOps.
             </p>
           </AnimatedSection>
         </div>
@@ -116,7 +51,9 @@ const Skills = () => {
                       <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                         <Icon className="w-6 h-6 text-accent" />
                       </div>
-                      <h3 className="text-xl font-semibold">{category.title}</h3>
+                      <h3 className="text-xl font-semibold">
+                        {category.title}
+                      </h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill) => (

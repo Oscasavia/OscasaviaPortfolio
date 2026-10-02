@@ -1,119 +1,148 @@
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import {
+  Search,
+  Home,
+  User,
+  Code2,
+  Layers,
+  Mail,
+  FileText,
+  ArrowUpRight,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
-  Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { CommandDialog } from "@/components/ui/command";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { projects } from "@/data/projects";
+import { resumeProfile } from "@/data/resume";
 
-function useMediaQuery(query: string) {
-  const [value, setValue] = useState(false);
-
-  useEffect(() => {
-    function onChange(event: MediaQueryListEvent) {
-      setValue(event.matches);
-    }
-
-    const result = window.matchMedia(query);
-    setValue(result.matches);
-    result.addEventListener("change", onChange);
-
-    return () => result.removeEventListener("change", onChange);
-  }, [query]);
-
-  return value;
-}
-
-const searchableContent = [
-  { title: "Home", path: "/", keywords: ["home", "portfolio", "main"] },
-  { title: "About", path: "/about", keywords: ["about", "bio", "profile", "oscasavia", "birungi"] },
-  { title: "Skills", path: "/skills", keywords: ["skills", "technologies", "expertise", "programming"] },
-  { title: "Projects", path: "/projects", keywords: ["projects", "work", "portfolio", "showcase"] },
-  { title: "Contact", path: "/contact", keywords: ["contact", "email", "reach", "connect"] },
-  { title: "Resume", path: "/resume", keywords: ["resume", "cv", "experience", "education", "certification"] },
+const pages = [
+  { title: "Home", path: "/", icon: Home, keywords: ["portfolio", "main"] },
+  {
+    title: "About",
+    path: "/about",
+    icon: User,
+    keywords: ["bio", "profile", "oscasavia", "birungi"],
+  },
+  {
+    title: "Skills",
+    path: "/skills",
+    icon: Code2,
+    keywords: [
+      "technologies",
+      "expertise",
+      "programming",
+      "automation",
+      "DevOps",
+      "React",
+      "Flutter",
+      ...resumeProfile.skillCategories.flatMap((category) => category.skills),
+    ],
+  },
+  {
+    title: "Projects",
+    path: "/projects",
+    icon: Layers,
+    keywords: ["work", "portfolio", "showcase"],
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+    icon: Mail,
+    keywords: ["email", "reach", "connect"],
+  },
+  {
+    title: "Resume",
+    path: "/resume",
+    icon: FileText,
+    keywords: ["cv", "experience", "education", "certification", "CVS"],
+  },
 ];
 
-interface SearchBarProps {
-  className?: string;
-}
-
-const SearchBar = ({ className }: SearchBarProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const SearchBar = ({ className = "" }: { className?: string }) => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const isDesktop = useMediaQuery("(min-width: 640px)");
-
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setIsOpen((open) => !open);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        setOpen((value) => !value);
       }
     };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
-
-  const runCommand = (path: string) => {
-    setIsOpen(false);
+  const select = (path: string) => {
+    setOpen(false);
     navigate(path);
   };
-
-  const SearchListContent = () => (
-    <CommandList>
-      <CommandEmpty>No results found.</CommandEmpty>
-      <CommandGroup heading="Pages">
-        {searchableContent.map((item) => (
-          <CommandItem
-            key={item.path}
-            value={`${item.title} ${item.keywords.join(" ")}`}
-            onSelect={() => runCommand(item.path)}
-          >
-            <span>{item.title}</span>
-          </CommandItem>
-        ))}
-      </CommandGroup>
-    </CommandList>
-  );
-
   return (
-    <>
-      <Button
-        onClick={() => setIsOpen(true)}
-        variant="ghost"
-        size="icon"
-        className={`rounded-full hover:bg-secondary transition-all ${className}`}
-        aria-label="Search"
-      >
-        <Search className="w-5 h-5" />
-      </Button>
-
-      {isDesktop ? (
-        <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
-          <CommandInput placeholder="Search portfolio..." />
-          <SearchListContent />
-        </CommandDialog>
-      ) : (
-        <Drawer open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerContent className="inset-x-px">
-            <div className="p-4">
-              <Command>
-                <CommandInput placeholder="Search portfolio..." />
-                <SearchListContent />
-              </Command>
-            </div>
-          </DrawerContent>
-        </Drawer>
-      )}
-    </>
+    <CommandDialog
+      open={open}
+      onOpenChange={setOpen}
+      trigger={
+        <Button
+          variant="ghost"
+          size="icon"
+          className={`rounded-full hover:bg-secondary ${className}`}
+          aria-label="Search"
+          aria-keyshortcuts="Control+k Meta+k"
+        >
+          <Search className="h-5 w-5" />
+        </Button>
+      }
+    >
+      <CommandInput
+        placeholder="Search pages or projects…"
+        aria-label="Search portfolio"
+      />
+      <CommandList>
+        <CommandEmpty>
+          No matches. Try “resume”, “Flutter”, or a project name.
+        </CommandEmpty>
+        <CommandGroup heading="Pages">
+          {pages.map((page) => (
+            <CommandItem
+              key={page.path}
+              value={page.title}
+              keywords={page.keywords}
+              onSelect={() => select(page.path)}
+            >
+              <page.icon className="text-muted-foreground" />
+              <span>{page.title}</span>
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandGroup heading="Projects">
+          {projects.map((project) => (
+            <CommandItem
+              key={project.id}
+              value={project.title}
+              keywords={[project.subtitle, ...project.tech]}
+              onSelect={() => select(`/projects#${project.id}`)}
+            >
+              <ArrowUpRight className="text-muted-foreground" />
+              <span className="min-w-0 flex-1 truncate">{project.title}</span>
+              <span className="text-xs text-muted-foreground">
+                {project.category}
+              </span>
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </CommandList>
+      <div className="border-t px-5 py-3 text-xs text-muted-foreground">
+        <span className="hidden sm:inline">
+          ↑ ↓ to navigate · Enter to open ·{" "}
+        </span>
+        Esc to close
+      </div>
+    </CommandDialog>
   );
 };
-
 export default SearchBar;

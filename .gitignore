@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local configuration and hosting state
+.env
+.env.*
+!.env.example
+.netlify/
+*.tsbuildinfo

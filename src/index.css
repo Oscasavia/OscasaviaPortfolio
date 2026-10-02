@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 
 @layer base {
   :root {
@@ -35,7 +35,7 @@
     --input: 40 15% 88%;
     --ring: 0 0% 8%;
 
-    --radius: 9999px;
+    --radius: 0.75rem;
 
     /* Custom design tokens */
     --nav-height: 80px;
@@ -262,3 +262,54 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+/* Accessibility improvements that preserve the original visual design. */
+:focus-visible:not([cmdk-input]) {
+  outline: 2px solid hsl(var(--foreground));
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 20px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+}
+.skip-link:focus { top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Search is a compact panel, independent of the site's pill buttons. */
+.portfolio-search { max-height: calc(100dvh - 3rem); }
+.portfolio-search [cmdk-root] { min-height: 0; }
+.portfolio-search [cmdk-input-wrapper] { padding: 0 3.5rem 0 1.25rem; }
+.portfolio-search [cmdk-input-wrapper]:focus-within { box-shadow: inset 0 -2px 0 hsl(var(--foreground) / .3); }
+.portfolio-search [cmdk-input] {
+  height: 64px;
+  min-width: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  font-size: 16px;
+}
+.portfolio-search [cmdk-list] { max-height: min(400px, calc(100dvh - 11rem)); padding: 8px; }
+.portfolio-search [cmdk-group-heading] { letter-spacing: .04em; }
+.portfolio-search [cmdk-item] {
+  gap: 12px;
+  min-height: 46px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.portfolio-search [cmdk-item][data-selected="true"] { background: hsl(var(--secondary)); color: hsl(var(--foreground)); }
+.portfolio-search > button { top: 10px; right: 10px; padding: 14px; border-radius: 8px; }
+.portfolio-search [cmdk-item] > svg { width: 18px; height: 18px; flex-shrink: 0; }
